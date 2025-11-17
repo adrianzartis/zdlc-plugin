@@ -49,7 +49,10 @@ claude plugin install /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugi
 
 **Once on GitHub, users install with:**
 ```bash
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
+# Clone and install
+git clone https://github.com/adrianzartis/zdlc-plugin.git
+mkdir -p ~/.claude/plugins
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
 ```
 
 ### Method 3: Manual Copy
@@ -133,7 +136,10 @@ git push --tags
 
 **Share this command:**
 ```bash
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
+# Clone and install
+git clone https://github.com/adrianzartis/zdlc-plugin.git
+mkdir -p ~/.claude/plugins
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
 ```
 
 ---
@@ -292,7 +298,10 @@ See: [SLACK-ATLASSIAN-SETUP.md](../SLACK-ATLASSIAN-SETUP.md) in parent directory
 
 From GitHub (after you push):
 ```bash
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
+# Clone and install
+git clone https://github.com/adrianzartis/zdlc-plugin.git
+mkdir -p ~/.claude/plugins
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
 ```
 
 Or from local directory:
@@ -524,7 +533,10 @@ git push -u origin main
 **Then share:**
 ```
 Install zDLC plugin with:
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
+# Clone and install
+git clone https://github.com/adrianzartis/zdlc-plugin.git
+mkdir -p ~/.claude/plugins
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
 ```
 
 ---

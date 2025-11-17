@@ -120,25 +120,34 @@ zDLC is a comprehensive Claude Code plugin that automates your entire software d
 
 ### Install Plugin
 
-#### Option 1: From GitHub (Recommended)
+#### Option 1: Clone and Install (Recommended)
 ```bash
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
-```
-
-#### Option 2: Local Installation
-```bash
-# Clone or download plugin
+# Clone the repository
 git clone https://github.com/adrianzartis/zdlc-plugin.git
 
-# Install locally
-claude plugin install /path/to/zdlc-plugin
+# Create plugins directory
+mkdir -p ~/.claude/plugins
+
+# Copy plugin to Claude Code plugins directory
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
+
+# Verify
+ls -la ~/.claude/plugins/zdlc/.claude-plugin/plugin.json
 ```
 
-#### Option 3: Manual Installation
+#### Option 2: Download ZIP and Install
+1. Download ZIP from https://github.com/adrianzartis/zdlc-plugin
+2. Extract the ZIP file
+3. Install:
 ```bash
-# Copy plugin to Claude Code plugins directory
 mkdir -p ~/.claude/plugins
-cp -r zdlc-plugin ~/.claude/plugins/zdlc
+cp -r /path/to/extracted/zdlc-plugin ~/.claude/plugins/zdlc
+```
+
+#### Option 3: Install from Local Directory
+```bash
+# If you already have the plugin locally
+cp -r /path/to/zdlc-plugin ~/.claude/plugins/zdlc
 ```
 
 ### Verify Installation

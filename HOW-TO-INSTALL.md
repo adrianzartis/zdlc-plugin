@@ -12,41 +12,52 @@
 
 ## 🚀 Installation Methods
 
-### Method 1: Install from GitHub (Recommended - Easiest)
+### Method 1: Clone from GitHub and Install (Recommended - Easiest)
 
-**This is the simplest method - one command to install:**
-
-```bash
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
-```
-
-That's it! The plugin will be downloaded and installed automatically.
-
-### Method 2: Install Locally (For Development/Testing)
-
-**From the plugin directory:**
+**This is the simplest method - clone and copy:**
 
 ```bash
-cd /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugin
-claude plugin install .
-```
+# Clone the repository
+git clone https://github.com/adrianzartis/zdlc-plugin.git
 
-**From anywhere (using absolute path):**
-
-```bash
-claude plugin install /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugin
-```
-
-### Method 3: Manual Copy (If claude plugin install doesn't work)
-
-```bash
 # Create plugins directory if it doesn't exist
 mkdir -p ~/.claude/plugins
 
 # Copy plugin to Claude Code plugins directory
-cp -r /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugin ~/.claude/plugins/zdlc
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
 
 # Verify it's there
+ls -la ~/.claude/plugins/zdlc/.claude-plugin/
+```
+
+**Expected output:** Should show `plugin.json` file
+
+### Method 2: Direct Download and Install
+
+**Download ZIP from GitHub:**
+
+1. Go to https://github.com/adrianzartis/zdlc-plugin
+2. Click "Code" → "Download ZIP"
+3. Extract the ZIP file
+4. Install:
+
+```bash
+# Create plugins directory
+mkdir -p ~/.claude/plugins
+
+# Copy extracted folder
+cp -r /path/to/extracted/zdlc-plugin ~/.claude/plugins/zdlc
+```
+
+### Method 3: Install from Local Directory (For Development)
+
+**If you already have the plugin locally:**
+
+```bash
+# Copy from local directory
+cp -r /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugin ~/.claude/plugins/zdlc
+
+# Verify
 ls -la ~/.claude/plugins/zdlc
 ```
 
@@ -124,18 +135,23 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
 ### Step 3: Install the zDLC Plugin
 
-**Choose your preferred method:**
+**Clone and install (recommended):**
 
 ```bash
-# Method 1: From GitHub (recommended)
-claude plugin install zdlc@github.com/adrianzartis/zdlc-plugin
+# Clone the repository
+git clone https://github.com/adrianzartis/zdlc-plugin.git
 
-# Method 2: From local directory
-claude plugin install /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugin
+# Create plugins directory
+mkdir -p ~/.claude/plugins
 
-# Method 3: Manual copy
-cp -r /Users/adriandelasierra/Desktop/agents/ux-agent/zdlc-plugin ~/.claude/plugins/zdlc
+# Copy plugin to Claude Code plugins directory
+cp -r zdlc-plugin ~/.claude/plugins/zdlc
+
+# Verify installation
+ls -la ~/.claude/plugins/zdlc/.claude-plugin/plugin.json
 ```
+
+**Expected output:** Should see the `plugin.json` file listed
 
 ### Step 4: Restart Claude Desktop
 
