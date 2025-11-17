@@ -1,0 +1,271 @@
+---
+description: Generate INVEST-compliant user stories with detailed acceptance criteria from a PRD
+argument-hint: [prd-file or @prd-file]
+allowed-tools: Read, Write, mcp__azure-devops__*, mcp__figma__*, mcp__mermaid__*
+model: claude-sonnet-4-5-20250929
+---
+
+# PRD to Stories - Story Generation
+
+Transform a PRD into actionable, INVEST-compliant user stories with acceptance criteria.
+
+## What This Does
+
+1. **Reads the PRD** from file ($1)
+2. **Analyzes requirements** and breaks them down
+3. **Generates user stories** following INVEST principles:
+   - **I**ndependent
+   - **N**egotiable
+   - **V**aluable
+   - **E**stimable
+   - **S**mall
+   - **T**estable
+4. **Creates detailed acceptance criteria** in Given-When-Then format
+5. **Estimates story points** based on complexity
+6. **Defines dependencies** between stories
+7. **Pushes to Azure DevOps** (optional)
+8. **Links designs** from Figma (if applicable)
+
+## Usage
+
+```
+/prd-to-stories @prds/order-history-prd.md
+```
+
+or
+
+```
+/prd-to-stories prds/google-sso-prd.md
+```
+
+## Output
+
+### Story Format
+
+```markdown
+## Story: [ID] - [Title]
+
+**As a** [persona]
+**I want to** [action]
+**So that** [benefit]
+
+### Story Points: [1, 2, 3, 5, 8, 13]
+
+### Priority: [High | Medium | Low]
+
+### Acceptance Criteria
+
+#### AC1: [Scenario name]
+**Given** [initial context]
+**When** [action occurs]
+**Then** [expected outcome]
+
+#### AC2: [Scenario name]
+...
+
+### Technical Notes
+- Implementation hints
+- Technology stack
+- Performance considerations
+- Security requirements
+
+### Dependencies
+- Blocks: [Story IDs that this blocks]
+- Blocked by: [Story IDs blocking this]
+
+### Design Links
+- Figma: [link]
+- Wireframes: [link]
+
+### Definition of Done
+- [ ] Code implemented and reviewed
+- [ ] Unit tests written and passing
+- [ ] Integration tests passing
+- [ ] Documentation updated
+- [ ] Acceptance criteria verified
+- [ ] No accessibility violations
+- [ ] Performance benchmarks met
+```
+
+## Process
+
+1. Parse PRD structure:
+   - Identify functional requirements
+   - Extract non-functional requirements
+   - Note technical constraints
+   - Understand user personas
+
+2. Group related requirements:
+   - Cluster by feature area
+   - Identify natural boundaries
+   - Ensure stories are independent
+
+3. Create stories following INVEST:
+   - **Independent**: Can be developed in any order
+   - **Negotiable**: Details can be discussed
+   - **Valuable**: Delivers user value
+   - **Estimable**: Team can estimate effort
+   - **Small**: Fits in one sprint
+   - **Testable**: Clear acceptance criteria
+
+4. Write detailed acceptance criteria:
+   - Use Given-When-Then format
+   - Cover happy path + edge cases
+   - Include error handling
+   - Specify validation rules
+   - Define UI behavior
+
+5. Estimate story points:
+   - 1-2: Simple changes, well-understood
+   - 3-5: Standard feature development
+   - 8-13: Complex features, multiple components
+   - >13: Epic, needs breakdown
+
+6. Map dependencies:
+   - Technical dependencies (A must be done before B)
+   - Data dependencies (needs migration, etc.)
+   - External dependencies (third-party APIs)
+
+7. Link artifacts:
+   - Figma designs (if exist)
+   - Architecture diagrams
+   - API documentation
+   - Parent epic in ADO
+
+8. (Optional) Push to Azure DevOps:
+   - Create Epic for the feature
+   - Create Feature for major components
+   - Create Stories with all details
+   - Link stories to Epic/Feature
+   - Assign to backlog or sprint
+
+## Example Output
+
+Given this PRD excerpt:
+```
+## Functional Requirements
+
+FR1: Users can filter order history by date range
+FR2: Users can export orders to CSV
+FR3: System loads orders in < 2 seconds
+```
+
+Generates:
+
+```markdown
+## Story: 001 - Date Range Filter for Order History
+
+**As an** e-commerce manager
+**I want to** filter my order history by date range
+**So that** I can quickly find orders from specific time periods
+
+### Story Points: 5
+
+### Priority: High
+
+### Acceptance Criteria
+
+#### AC1: User can select date range
+**Given** I am on the order history page
+**When** I click the "Filter by Date" button
+**Then** I see a date range picker with "From" and "To" fields
+
+#### AC2: Filter applies to order list
+**Given** I have selected a date range (Jan 1 - Jan 31)
+**When** I click "Apply Filter"
+**Then** Only orders within that date range are displayed
+**And** The order count updates to show filtered count
+
+#### AC3: Clear filter functionality
+**Given** I have applied a date filter
+**When** I click "Clear Filter"
+**Then** All orders are displayed again
+**And** The date range picker is reset
+
+#### AC4: Invalid date range handling
+**Given** I am selecting a date range
+**When** I select a "To" date earlier than "From" date
+**Then** I see an error message: "End date must be after start date"
+**And** The "Apply Filter" button is disabled
+
+#### AC5: URL parameter persistence
+**Given** I have applied a date filter
+**When** I refresh the page or share the URL
+**Then** The date filter is still applied
+**And** The filtered results are displayed
+
+### Technical Notes
+- Use date-fns for date manipulation (context7: fetch latest)
+- Store filter state in URL query params
+- Implement client-side filtering for <1000 orders
+- Use server-side filtering for >1000 orders
+- Cache filtered results for 5 minutes
+
+### Dependencies
+- Blocked by: None
+- Blocks: Story 003 (Export requires filter context)
+
+### Design Links
+- Figma: [Design file link]
+- Component: DateRangePicker from design system
+
+### Definition of Done
+- [x] Code implemented and reviewed
+- [ ] Unit tests >90% coverage
+- [ ] Integration tests for filter scenarios
+- [ ] Accessibility: Keyboard navigation works
+- [ ] Performance: Filter completes in <200ms
+- [ ] Documentation: README updated with filter usage
+```
+
+## Batch Creation
+
+The command generates ALL stories from the PRD, typically 5-15 stories depending on feature complexity.
+
+## Azure DevOps Integration
+
+If you want to push stories to ADO:
+
+```
+/prd-to-stories @prds/order-history-prd.md Push to ADO project "ECommerce" under Epic "Order Management"
+```
+
+This will:
+1. Create Epic in ADO
+2. Create all stories
+3. Link stories to Epic
+4. Set appropriate tags
+5. Return ADO URLs for each item
+
+## Tips
+
+- Review PRD thoroughly first
+- Break down large stories (>8 points) further
+- Ensure each story delivers user value
+- Write specific, testable acceptance criteria
+- Include both positive and negative test cases
+- Link to designs early (helps with estimation)
+- Consider mobile + desktop scenarios
+- Don't forget accessibility requirements
+
+## Story Validation
+
+Each story is validated against INVEST before generation:
+- ✅ Independent: No tight coupling
+- ✅ Negotiable: Implementation details flexible
+- ✅ Valuable: Delivers user benefit
+- ✅ Estimable: Scope is clear
+- ✅ Small: Fits in 1-2 sprint
+- ✅ Testable: Clear acceptance criteria
+
+If a story doesn't meet INVEST, it's automatically split or refined.
+
+## Advanced Options
+
+Customize story generation:
+
+```
+/prd-to-stories @prds/dashboard.md Target story points: 3-5. Focus on MVP features. Include performance acceptance criteria.
+```
+
+The additional context helps tailor the stories to your needs.

@@ -1,0 +1,72 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit:*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre-commit-validator.sh",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/auto-link-work-items.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__github__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/post-merge-notifier.sh",
+            "timeout": 20
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/test-file-generator.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/sprint-context-injector.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Evaluate if we should update the Azure DevOps work item status based on the work completed. Check if:\n1. A story/bug was fully implemented\n2. Tests were written and are passing\n3. Code was committed\n\nConsider the conversation context and recent tool usage. Respond with JSON:\n{\n  \"decision\": \"approve\" or \"block\",\n  \"reason\": \"explanation\",\n  \"updateWorkItem\": true/false,\n  \"newStatus\": \"In Review\" or \"Closed\" or null,\n  \"notifyTeam\": true/false\n}",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

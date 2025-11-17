@@ -1,0 +1,29 @@
+{
+  "name": "zdlc",
+  "version": "1.0.0",
+  "description": "AI-Powered SDLC Automation - From Interview to Production. Automates the entire software development lifecycle with intelligent workflows, team collaboration, context-aware code generation, and BDD/Gherkin test automation.",
+  "author": {
+    "name": "Adrian de la Sierra",
+    "email": "adrian@zartis.com"
+  },
+  "keywords": [
+    "sdlc",
+    "automation",
+    "azure-devops",
+    "github",
+    "slack",
+    "confluence",
+    "agile",
+    "productivity",
+    "workflow",
+    "devops",
+    "bdd",
+    "gherkin",
+    "cucumber",
+    "testing"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/adrianzartis/zdlc-plugin",
+  "repository": "https://github.com/adrianzartis/zdlc-plugin",
+  "mcpServers": "../.mcp.json"
+}
