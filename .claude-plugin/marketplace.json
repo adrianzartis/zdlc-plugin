@@ -7,10 +7,16 @@
     "name": "Adrian de la Sierra",
     "email": "adrian@zartis.com"
   },
+  "contributors": [
+    {
+      "name": "Javier Aviles",
+      "email": "francisco.aviles@zartis.com"
+    }
+  ],
   "plugins": [
     {
       "name": "zdlc",
-      "description": "Complete SDLC automation plugin with 6 commands (/ship-story, /bug-fix, /sprint-summary, /interview-to-prd, /prd-to-stories, /generate-gherkin), 3 specialized agents (senior-developer, product-manager, qa-specialist), 4 auto-activating skills (story-generator, context-aware-coding, ado-sync, gherkin-converter), and event-driven hooks for Azure DevOps and GitHub workflows",
+      "description": "Complete SDLC automation plugin with 9 commands (/ship-story, /bug-fix, /sprint-summary, /interview-to-prd, /prd-to-stories, /generate-gherkin, /system-architect, /check-license, /dependency-audit), 5 specialized agents (system-architect, license-guardian, senior-developer, product-manager, qa-specialist), 4 auto-activating skills (story-generator, context-aware-coding, ado-sync, gherkin-converter), license compliance automation, and event-driven hooks for Azure DevOps and GitHub workflows",
       "version": "1.0.0",
       "author": {
         "name": "Adrian de la Sierra",
