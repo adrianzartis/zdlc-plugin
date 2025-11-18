@@ -54,6 +54,13 @@
     "mermaid": {
       "command": "npx",
       "args": ["-y", "@peng-shawn/mermaid-mcp-server"]
+    },
+    "socket-security": {
+      "command": "npx",
+      "args": ["-y", "@socketsecurity/mcp"],
+      "env": {
+        "SOCKET_API_KEY": "${SOCKET_API_KEY}"
+      }
     }
   }
 }
