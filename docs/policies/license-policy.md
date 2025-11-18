@@ -3,94 +3,102 @@
 **Last Updated:** 2025-01-18
 **Maintained By:** Zartis Engineering
 **Applies To:** All client projects and internal products
+**Official Zartis OSS Guidelines:** https://docs.google.com/document/d/1Fzoh32EjHMyvXjOLDvQF_hdGrMn-AJ-RRLNgR_jT7vw/edit?tab=t.0
 
 ---
 
 ## Policy Summary
 
+**CRITICAL:** Following these open-source guidelines is a **contractual obligation** towards clients. Any unauthorized or improper license usage is in **direct violation of contractual obligations** from the Zartisian towards Zartis.
+
 Zartis projects must only use dependencies with licenses that allow us to:
 - Deliver code to clients as proprietary software
 - Sell code as commercial products
 - Maintain client's ability to use their codebase without restrictions
+- Prevent exposing clients to unforeseen licensing costs or obligation to open-source proprietary code
 
-**Default stance:** If uncertain, ask legal or license-guardian agent.
+**Approval Required:** ALL open-source software requires explicit written approval from:
+1. **The client first and foremost** (for client projects)
+2. **Engineering Director** (for Zartis-governed projects: fixed-scope, internal, isolated team projects)
+
+**Zartisian Responsibility:** It is solely the Zartisian's responsibility to request and obtain approval, and to log all open-source software in the designated client-specific tracking sheet (Google Drive).
+
+**Default stance:** If uncertain, ask Engineering Director or license-guardian agent.
 
 ---
 
 ## License Categories
 
-### ✅ Auto-Approved (Safe for Commercial Use)
+### ✅ Low Risk - Permissive Licenses (Require ED Approval)
 
-These licenses are **permissive** and place minimal restrictions on how the code is used:
+These licenses are **permissive** and place minimal restrictions on how the code is used. However, **Engineering Director approval is still mandatory** before use.
 
-| License | SPDX ID | Notes |
-|---------|---------|-------|
-| MIT License | MIT | Most permissive, widely used |
-| Apache License 2.0 | Apache-2.0 | Includes explicit patent grant |
-| BSD 2-Clause License | BSD-2-Clause | Simple permissive license |
-| BSD 3-Clause License | BSD-3-Clause | Adds non-endorsement clause |
-| ISC License | ISC | Similar to MIT, slightly simpler |
-| CC0 1.0 Universal | CC0-1.0 | Public domain dedication |
-| The Unlicense | Unlicense | Public domain |
-| Zero-Clause BSD | 0BSD | Most permissive BSD variant |
-| BlueOak License 1.0.0 | BlueOak-1.0.0 | Modern permissive license |
-| Python Software Foundation | Python-2.0 | Python-specific permissive |
-
-**Action:** Automatically approve and document in `docs/DEPENDENCY_LICENSES.md`
-
----
-
-### ❌ Forbidden (Copyleft / Viral Licenses)
-
-These licenses require **derivative works to be open-sourced** under the same license. Using these means clients cannot keep their code proprietary.
-
-| License | SPDX ID | Why Forbidden |
-|---------|---------|---------------|
-| GNU General Public License v2.0 | GPL-2.0, GPL-2.0-only, GPL-2.0-or-later | Strong copyleft - entire program must be GPL |
-| GNU General Public License v3.0 | GPL-3.0, GPL-3.0-only, GPL-3.0-or-later | Strong copyleft + anti-tivoization |
-| GNU Affero General Public License v3.0 | AGPL-3.0, AGPL-3.0-only, AGPL-3.0-or-later | Network copyleft - even API usage triggers |
-| Server Side Public License | SSPL | Extremely restrictive, like AGPL but worse |
-| Open Software License 3.0 | OSL-3.0 | Copyleft variant |
-| European Union Public License 1.2 | EUPL-1.2 | Copyleft license |
-
-**Impact of using:**
-- All code using the library must be released as open source
-- Client cannot sell their software as proprietary
-- Legal liability for Zartis
+| License | SPDX ID | Risk Level | Notes |
+|---------|---------|------------|-------|
+| MIT License | MIT | Low | Most permissive, widely used |
+| Apache License 2.0 | Apache-2.0 | Low | Includes explicit patent grant |
+| BSD 2-Clause License | BSD-2-Clause | Low | Simple permissive license |
+| BSD 3-Clause License | BSD-3-Clause | Low | Adds non-endorsement clause |
+| ISC License | ISC | Low | Similar to MIT, slightly simpler |
+| CC0 1.0 Universal | CC0-1.0 | Low | Public domain dedication |
+| The Unlicense | Unlicense | Low | Public domain |
+| Zero-Clause BSD | 0BSD | Low | Most permissive BSD variant |
+| Mozilla Public License 2.0 | MPL-2.0 | Low | Permissive (per Zartis guidelines) |
+| BlueOak License 1.0.0 | BlueOak-1.0.0 | Low | Modern permissive license |
+| Python Software Foundation | Python-2.0 | Low | Python-specific permissive |
 
 **Action:**
-1. **Block immediately** - Do NOT use
-2. Create GitHub/ADO issue with `[License Compliance]` tag
-3. Find alternative with permissive license
-4. If absolutely critical, escalate to legal team
+1. Document in `docs/DEPENDENCY_LICENSES.md` with required tracking fields
+2. Notify user that Engineering Director approval is required
+3. User must log in client-specific tracking sheet (Google Drive)
 
 ---
 
-### ⚠️ Requires Review (Weak Copyleft)
+### ❌ Forbidden (Copyleft / Viral Licenses) - CONTRACTUAL VIOLATION
 
-These licenses have **limited copyleft** requirements. May be acceptable depending on usage, but need case-by-case review.
+These licenses require **derivative works to be open-sourced** under the same license. Using these means clients cannot keep their code proprietary and **violates Zartis contractual obligations**.
 
-#### Weak Copyleft (File/Library Level)
+| License | SPDX ID | Risk Level | Why Forbidden |
+|---------|---------|------------|---------------|
+| GNU General Public License v2.0 | GPL-2.0, GPL-2.0-only, GPL-2.0-or-later | Not Allowed | Strong copyleft - entire program must be GPL |
+| GNU General Public License v3.0 | GPL-3.0, GPL-3.0-only, GPL-3.0-or-later | Not Allowed | Strong copyleft + anti-tivoization |
+| GNU Lesser General Public License v2.1 | LGPL-2.1, LGPL-2.1-only, LGPL-2.1-or-later | Not Allowed | Copyleft (per Zartis guidelines) |
+| GNU Lesser General Public License v3.0 | LGPL-3.0, LGPL-3.0-only, LGPL-3.0-or-later | Not Allowed | Copyleft (per Zartis guidelines) |
+| GNU Affero General Public License v3.0 | AGPL-3.0, AGPL-3.0-only, AGPL-3.0-or-later | Not Allowed | Network copyleft - even API usage triggers |
+| Server Side Public License | SSPL | Not Allowed | Extremely restrictive, like AGPL but worse |
+| Open Software License 3.0 | OSL-3.0 | Not Allowed | Copyleft variant |
+| European Union Public License 1.2 | EUPL-1.2 | Not Allowed | Copyleft license |
 
-| License | SPDX ID | When Acceptable | When Problematic |
-|---------|---------|-----------------|------------------|
-| GNU Lesser GPL 2.1 | LGPL-2.1, LGPL-2.1-only, LGPL-2.1-or-later | Used as **unmodified** shared library (dynamically linked) | Modified or statically linked |
-| GNU Lesser GPL 3.0 | LGPL-3.0, LGPL-3.0-only, LGPL-3.0-or-later | Used as **unmodified** shared library (dynamically linked) | Modified or statically linked |
-| Mozilla Public License 2.0 | MPL-2.0 | Used as library, **not modified** | Files from library are modified |
-| Eclipse Public License 1.0 | EPL-1.0 | Used as library, **not modified** | Modified or integrated deeply |
-| Eclipse Public License 2.0 | EPL-2.0 | Used as library, **not modified** | Modified or integrated deeply |
-| Common Public License 1.0 | CPL-1.0 | Used as library, **not modified** | Modified or integrated |
+**Impact of using:**
+- **Contractual violation** - Direct breach of Zartis obligations to client
+- All code using the library must be released as open source
+- Client cannot sell their software as proprietary
+- Exposes client to unforeseen licensing costs
+- Legal liability for Zartis and Zartisian
 
-**Key Questions:**
-1. Are we **modifying** the library's source code? (If yes → risky)
-2. Are we **dynamically linking** vs statically linking? (Dynamic → safer)
-3. Does the library remain a **separate component**? (If yes → safer)
+**Action:**
+1. **BLOCK IMMEDIATELY** - Do NOT use under any circumstances
+2. Create GitHub/ADO issue with `[License Compliance - CONTRACTUAL VIOLATION]` tag
+3. Find alternative with permissive (low risk) license
+4. If absolutely critical, escalate to Engineering Director and legal team
+
+---
+
+### ⚠️ Requires Specialized Review
+
+These licenses require **case-by-case evaluation** and escalation to Engineering Director.
+
+| License | SPDX ID | Risk Level | Notes |
+|---------|---------|------------|-------|
+| Eclipse Public License 1.0 | EPL-1.0 | Requires Review | Weak copyleft - needs legal evaluation |
+| Eclipse Public License 2.0 | EPL-2.0 | Requires Review | Weak copyleft - needs legal evaluation |
+| Common Public License 1.0 | CPL-1.0 | Requires Review | Weak copyleft - needs legal evaluation |
 
 **Action:**
 1. Document usage in `docs/DEPENDENCY_LICENSES.md` (Requires Review section)
-2. Get tech lead approval
+2. **Escalate to Engineering Director** for legal review
 3. Document in ADR if significant architectural dependency
-4. Add to audit log with justification
+4. Add to audit log with justification and approval details
 
 ---
 
@@ -255,14 +263,14 @@ Some clients may have **different requirements:**
 
 ## Quick Reference
 
-**Safe to use without approval:**
-✅ MIT, Apache-2.0, BSD-2/3-Clause, ISC, CC0, Unlicense
+**Low Risk (Permissive - Requires ED Approval):**
+✅ MIT, Apache-2.0, BSD-2/3-Clause, ISC, CC0, Unlicense, MPL-2.0
 
-**Never use (copyleft):**
-❌ GPL-2.0, GPL-3.0, AGPL-3.0, SSPL
+**Never use (Copyleft - Contractual Violation):**
+❌ GPL-2.0/3.0, AGPL-3.0, LGPL-2.1/3.0, SSPL, OSL-3.0, EUPL-1.2
 
-**Use with caution (needs approval):**
-⚠️ LGPL-2.1/3.0, MPL-2.0, EPL-1.0/2.0
+**Requires specialized review (Escalate to ED):**
+⚠️ EPL-1.0/2.0, CPL-1.0
 
 **Requires purchase:**
 💰 Commercial, Proprietary, Dual-licensed (GPL + Commercial)
@@ -272,4 +280,5 @@ Some clients may have **different requirements:**
 
 ---
 
-**Questions?** Consult the license-guardian agent or contact legal@zartis.com
+**Official Zartis OSS Guidelines:** https://docs.google.com/document/d/1Fzoh32EjHMyvXjOLDvQF_hdGrMn-AJ-RRLNgR_jT7vw/edit?tab=t.0
+**Questions?** Consult the license-guardian agent or contact Engineering Director
