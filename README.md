@@ -20,6 +20,22 @@ zDLC is a comprehensive Claude Code plugin that automates your entire software d
 
 ---
 
+## ⚡ Quick Installation
+
+Install the plugin in Claude Code with just 2 commands:
+
+```bash
+# Add the marketplace
+/plugin marketplace add adrianzartis/zdlc-plugin
+
+# Install the plugin
+/plugin install zdlc@adrianzartis
+```
+
+**That's it!** See [INSTALL-SIMPLE.md](./INSTALL-SIMPLE.md) for full instructions.
+
+---
+
 ## Features
 
 ### 🎯 Commands (User-Invoked Workflows)

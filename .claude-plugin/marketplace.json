@@ -1,0 +1,38 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "zdlc-marketplace",
+  "version": "1.0.0",
+  "description": "zDLC (Zartis Development Life Cycle) - AI-Powered SDLC Automation for Claude Code. Complete workflow automation from user interviews to production deployment with Azure DevOps, GitHub integration, and BDD/Gherkin support.",
+  "owner": {
+    "name": "Adrian de la Sierra",
+    "email": "adrian@zartis.com"
+  },
+  "plugins": [
+    {
+      "name": "zdlc",
+      "description": "Complete SDLC automation plugin with 6 commands (/ship-story, /bug-fix, /sprint-summary, /interview-to-prd, /prd-to-stories, /generate-gherkin), 3 specialized agents (senior-developer, product-manager, qa-specialist), 4 auto-activating skills (story-generator, context-aware-coding, ado-sync, gherkin-converter), and event-driven hooks for Azure DevOps and GitHub workflows",
+      "version": "1.0.0",
+      "author": {
+        "name": "Adrian de la Sierra",
+        "email": "adrian@zartis.com"
+      },
+      "source": ".",
+      "category": "productivity",
+      "homepage": "https://github.com/adrianzartis/zdlc-plugin",
+      "repository": "https://github.com/adrianzartis/zdlc-plugin",
+      "keywords": [
+        "sdlc",
+        "automation",
+        "azure-devops",
+        "github",
+        "agile",
+        "productivity",
+        "workflow",
+        "devops",
+        "bdd",
+        "gherkin",
+        "testing"
+      ]
+    }
+  ]
+}
