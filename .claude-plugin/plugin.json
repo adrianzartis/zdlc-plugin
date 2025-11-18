@@ -6,6 +6,12 @@
     "name": "Adrian de la Sierra",
     "email": "adrian@zartis.com"
   },
+  "contributors": [
+    {
+      "name": "Javier Aviles",
+      "email": "francisco.aviles@zartis.com"
+    }
+  ],
   "keywords": [
     "sdlc",
     "automation",

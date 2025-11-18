@@ -48,17 +48,28 @@ You'll implement the story with modern, production-ready code. The workflow:
    - Linked Figma designs (if any)
    - Parent features/epics for context
 
-2. Determine required libraries/frameworks from:
+2. **Consult System Architect** if the story impacts:
+   - System architecture or design patterns
+   - Data models or database schemas
+   - Performance or scalability
+   - New dependencies or integrations
+   - Security considerations
+
+   Use the `system-architect` agent to review architectural implications before implementation.
+   Skip this step only for trivial UI-only changes with no backend impact.
+
+3. Determine required libraries/frameworks from:
    - Existing package.json/requirements.txt
    - Story technical notes
    - Team conventions
+   - System architect recommendations (from step 2)
 
-3. Use context7 to fetch current documentation for:
+4. Use context7 to fetch current documentation for:
    - Primary framework (React, Angular, Vue, etc.)
    - UI libraries (Material-UI, Ant Design, etc.)
    - Utility libraries (lodash, date-fns, etc.)
 
-4. Implement following best practices:
+5. Implement following best practices:
    - Write production code (no TODOs)
    - Include comprehensive tests (unit + integration)
    - Handle errors gracefully
@@ -67,26 +78,26 @@ You'll implement the story with modern, production-ready code. The workflow:
    - Ensure accessibility (WCAG 2.1 AA)
    - Mobile-responsive if UI component
 
-5. Run tests locally to ensure they pass
+6. Run tests locally to ensure they pass
 
-6. Create a git commit with:
+7. Create a git commit with:
    - Descriptive message
    - Reference to ADO story: "AB#12345"
    - Co-authored attribution
 
-7. Create PR via GitHub MCP:
+8. Create PR via GitHub MCP:
    - Link to ADO story
    - Include acceptance criteria checklist
    - Add relevant labels
    - Request reviewers (if configured)
 
-8. Monitor CI/CD pipeline:
+9. Monitor CI/CD pipeline:
    - Wait for tests to complete
    - Report any failures
 
-9. Update ADO story status to "In Review"
+10. Update ADO story status to "In Review"
 
-10. (Optional) Notify team on Slack:
+11. (Optional) Notify team on Slack:
     - Post to #engineering channel
     - Include PR link and story summary
 

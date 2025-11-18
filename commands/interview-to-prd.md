@@ -151,36 +151,49 @@ Explicitly what we're NOT building in this iteration
    - Identify patterns across multiple interviews (if batch)
    - Categorize findings
 
-2. Identify user personas:
+2. **Consult System Architect** for technical feasibility:
+   - Review proposed requirements for architectural viability
+   - Identify technical constraints early
+   - Validate scalability of desired features
+   - Flag potential architectural risks
+   - Suggest technology stack if not specified
+   - Estimate architectural complexity
+
+   Use the `system-architect` agent to ensure the PRD is technically sound before detailed breakdown.
+
+3. Identify user personas:
    - Create distinct personas from interview subjects
    - Define goals, pain points, behaviors
    - Prioritize primary vs secondary personas
 
-3. Synthesize requirements:
+4. Synthesize requirements:
    - Convert pain points into functional requirements
    - Derive non-functional requirements (performance, security, etc.)
    - Group related requirements
+   - Incorporate architectural constraints from step 2
 
-4. Define success metrics:
+5. Define success metrics:
    - Quantifiable measures
    - Aligned with business goals
    - Measurable post-launch
 
-5. Create high-level user stories:
+6. Create high-level user stories:
    - One story per major requirement
    - Focus on user value
    - Include acceptance criteria
+   - Consider architectural dependencies
 
-6. Generate visual artifacts:
+7. Generate visual artifacts:
    - **Miro Board**: User journey map showing current vs future state
-   - **Mermaid Diagram**: System architecture or user flow
+   - **Mermaid Diagram**: System architecture or user flow (with architect input)
 
-7. Save outputs:
+8. Save outputs:
    - Local: `prds/[feature-name]-prd.md`
    - Confluence: "PRDs" space (if configured)
    - Miro: Board link embedded in PRD
+   - Include architectural recommendations in Technical Considerations section
 
-8. Next steps suggestion:
+9. Next steps suggestion:
    - Command to break down into user stories: `/prd-to-stories`
    - Stakeholder review checklist
    - Design handoff requirements
