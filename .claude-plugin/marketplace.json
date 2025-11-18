@@ -16,7 +16,7 @@
         "name": "Adrian de la Sierra",
         "email": "adrian@zartis.com"
       },
-      "source": ".",
+      "source": "./",
       "category": "productivity",
       "homepage": "https://github.com/adrianzartis/zdlc-plugin",
       "repository": "https://github.com/adrianzartis/zdlc-plugin",
